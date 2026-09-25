@@ -1,0 +1,400 @@
+room4
+<div class="area_data">
+                    <div class="area_title">
+                      <img src="image/room4-title.png" width="50" height="200">
+                    </div>
+                    <div class="area_word">
+                      房價：　一般平日：<span class="color_price">：6,200</span>　　暑假平日：<span class="color_price">6,500</span>　　假日(週六)：<span class="color_price">6,900</span>　　農曆春節：<span class="color_price">8,800</span><br>
+                      客房設施<br>
+                      <table width="900" border="1" cellpadding="2" cellspacing="0" align="center">
+                        <tbody><tr>
+                          <td>‧日立變頻分離式冷暖氣機&nbsp;</td>
+                          <td>‧竹炭纖維獨立筒床墊&nbsp;</td>
+                          <td>‧37吋液晶電視(有線頻道)&nbsp;</td>
+                          <td>‧180度全景超大海景落地窗&nbsp;</td>
+                          <td>‧太平洋景觀大陽台&nbsp;</td>
+                          <td>‧乾濕分離獨立衛浴&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="6">
+                            ‧ADSL寬頻網路+wifi無線網路(請自備電腦)&nbsp;　　‧提供盥洗用品
+                            / 熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 /
+                            健康拖鞋　　‧提供活力早餐
+                          </td>
+                        </tr>
+                      </tbody></table>
+                      　　　　　　　　 　　　　　<br>
+                      　　　
+                    </div>
+
+                    <div id="products">
+                      <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+                        <div class="slides_control" style="position: relative; width: 2400px; height: 480px; left: -800px;"><img src="image/room4/p1.jpg?1790008201492" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p2.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p3.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p4.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p5.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p6.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p7.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room4/p8.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0;"></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                      </div>
+                      <table cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td>
+                            <ul class="pagination" style="
+                                margin: 0;
+                                padding: 0;
+                                list-style-type: none;
+                              ">
+                              <li class="">
+                                <a class="naz" href="#0"><img src="image/room4/p1s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#1"><img src="image/room4/p2s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#2"><img src="image/room4/p3s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#3"><img src="image/room4/p4s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#4"><img src="image/room4/p5s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#5"><img src="image/room4/p6s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#6"><img src="image/room4/p7s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="current">
+                                <a class="naz" href="#7"><img src="image/room4/p8s.jpg" width="80" height="53"></a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+
+---
+room1
+<div class="area_data">
+                    <div class="area_title">
+                      <img src="image/room1-title.png" width="50" height="200">
+                    </div>
+                    <div class="area_word">
+                      房價：　一般平日：<span class="color_price">3,200</span>　　暑假平日：<span class="color_price">3,500</span>　　假日(週六)：<span class="color_price">3,900</span>　　農曆春節：<span class="color_price">4,800</span><br>
+                      客房設施<br>
+                      <table width="900" border="1" cellpadding="2" cellspacing="0" align="center">
+                        <tbody><tr>
+                          <td>‧日立變頻分離式冷暖氣機&nbsp;</td>
+                          <td>‧竹炭纖維獨立筒床墊&nbsp;</td>
+                          <td>‧37吋液晶電視(有線頻道)&nbsp;</td>
+                          <td>‧3.15米 x 2.6米超大海景落地窗&nbsp;</td>
+                          <td>‧太平洋景觀大陽台&nbsp;</td>
+                          <td>‧乾濕分離獨立衛浴&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="6">
+                            ‧ADSL寬頻網路+wifi無線網路(請自備電腦)&nbsp;　　‧提供盥洗用品
+                            / 熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 /
+                            健康拖鞋　　‧提供活力早餐
+                          </td>
+                        </tr>
+                      </tbody></table>
+                      　　　　　　　　 　　　　　<br>
+                      　　　
+                    </div>
+
+                    <div id="products">
+                      <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+                        <div class="slides_control" style="position: relative; width: 2400px; height: 480px; left: -800px;"><img src="image/room1/p1.jpg?1790009251704" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p2.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p3.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p4.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p5.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p6.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p7.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room1/p8.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0;"></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                      </div>
+                      <table cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td>
+                            <ul class="pagination" style="
+                                margin: 0;
+                                padding: 0;
+                                list-style-type: none;
+                              ">
+                              <li class="">
+                                <a class="naz" href="#0"><img src="image/room1/p1s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#1"><img src="image/room1/p2s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#2"><img src="image/room1/p3s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#3"><img src="image/room1/p4s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#4"><img src="image/room1/p5s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#5"><img src="image/room1/p6s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#6"><img src="image/room1/p7s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="current">
+                                <a class="naz" href="#7"><img src="image/room1/p8s.jpg" width="80" height="53"></a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+------------------------
+room2
+<div class="area_data">
+                    <div class="area_title">
+                      <img src="image/room2-title.png" width="50" height="200">
+                    </div>
+                    <div class="area_word">
+                      房價：　一般平日：<span class="color_price">3,600</span>　　暑假平日：<span class="color_price">3,900</span>　　假日(週六)：<span class="color_price">4,300</span>　　農曆春節：<span class="color_price">5,300</span><br>
+                      客房設施<br>
+                      <table width="900" border="1" cellpadding="2" cellspacing="0" align="center">
+                        <tbody><tr>
+                          <td>‧日立變頻分離式冷暖氣機&nbsp;</td>
+                          <td>‧竹炭纖維獨立筒床墊&nbsp;</td>
+                          <td>‧37吋液晶電視(有線頻道)&nbsp;</td>
+                          <td>‧3.15米 x 2.6米超大海景落地窗&nbsp;</td>
+                          <td>‧太平洋景觀大陽台&nbsp;</td>
+                          <td>‧乾濕分離獨立衛浴&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="6">
+                            ‧ADSL寬頻網路+wifi無線網路(請自備電腦)&nbsp;　　‧提供盥洗用品
+                            / 熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 /
+                            健康拖鞋　　‧提供活力早餐
+                          </td>
+                        </tr>
+                      </tbody></table>
+                      　　　　　　　　 　　　　　<br>
+                      　　　
+                    </div>
+
+                    <div id="products">
+                      <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+                        <div class="slides_control" style="position: relative; width: 2400px; height: 480px; left: -800px;"><img src="image/room2/p1.jpg?1790009302058" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p2.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p3.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0;"><img src="image/room2/p4.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p5.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p6.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p7.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p8.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room2/p9.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                      </div>
+                      <table cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td>
+                            <ul class="pagination" style="
+                                margin: 0;
+                                padding: 0;
+                                list-style-type: none;
+                              ">
+                              <li class="">
+                                <a class="naz" href="#0"><img src="image/room2/p1s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#1"><img src="image/room2/p2s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="current">
+                                <a class="naz" href="#2"><img src="image/room2/p3s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#3"><img src="image/room2/p4s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#4"><img src="image/room2/p5s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#5"><img src="image/room2/p6s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#6"><img src="image/room2/p7s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#7"><img src="image/room2/p8s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#8"><img src="image/room2/p9s.jpg" width="80" height="53"></a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+--------------------
+room3
+<div class="area_data">
+                    <div class="area_title">
+                      <img src="image/room3-title.png" width="50" height="200">
+                    </div>
+                    <div class="area_word">
+                      房價：　一般平日：<span class="color_price">：4,200</span>　　暑假平日：<span class="color_price">4,500</span>　　假日(週六)：<span class="color_price">4,900</span>　　農曆春節：<span class="color_price">6,300</span><br>
+                      客房設施<br>
+                      <table width="900" border="1" cellpadding="2" cellspacing="0" align="center">
+                        <tbody><tr>
+                          <td>‧日立變頻分離式冷暖氣機&nbsp;</td>
+                          <td>‧竹炭纖維獨立筒床墊&nbsp;</td>
+                          <td>‧37吋液晶電視(有線頻道)&nbsp;</td>
+                          <td>‧3.15米 x 2.6米超大海景落地窗&nbsp;</td>
+                          <td>‧太平洋景觀大陽台&nbsp;</td>
+                          <td>‧乾濕分離獨立衛浴&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="6">
+                            ‧ADSL寬頻網路+wifi無線網路(請自備電腦)&nbsp;　　‧提供盥洗用品
+                            / 熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 /
+                            健康拖鞋　　‧提供活力早餐
+                          </td>
+                        </tr>
+                      </tbody></table>
+                      　　　　　　　　 　　　　　<br>
+                      　　　
+                    </div>
+
+                    <div id="products">
+                      <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+                        <div class="slides_control" style="position: relative; width: 2400px; height: 480px; left: -800px;"><img src="image/room3/p1.jpg?1790009326963" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room3/p2.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room3/p3.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0;"><img src="image/room3/p4.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room3/p5.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room3/p6.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room3/p7.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room3/p8.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                      </div>
+                      <table cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td>
+                            <ul class="pagination" style="
+                                margin: 0;
+                                padding: 0;
+                                list-style-type: none;
+                              ">
+                              <li class="">
+                                <a class="naz" href="#0"><img src="image/room3/p1s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#1"><img src="image/room3/p2s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="current">
+                                <a class="naz" href="#2"><img src="image/room3/p3s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#3"><img src="image/room3/p4s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#4"><img src="image/room3/p5s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#5"><img src="image/room3/p6s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#6"><img src="image/room3/p7s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#7"><img src="image/room3/p8s.jpg" width="80" height="53"></a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </div>
+                  </div>
+
+-------------------
+room5
+<div class="area_data">
+                    <div class="area_title">
+                      <img src="image/room5-title.png" width="50" height="200">
+                    </div>
+                    <div class="area_word">
+                      房價：　一般平日：<span class="color_price">：4,200</span>　　暑假平日：<span class="color_price">4,500</span>　　假日(週六)：<span class="color_price">4,900</span>　　農曆春節：<span class="color_price">6,300</span><br>
+                      客房設施<br>
+                      <table width="900" border="1" cellpadding="2" cellspacing="0" align="center">
+                        <tbody><tr>
+                          <td>‧日立變頻分離式冷暖氣機&nbsp;</td>
+                          <td>‧竹炭纖維獨立筒床墊&nbsp;</td>
+                          <td>‧37吋液晶電視(有線頻道)&nbsp;</td>
+                          <td>‧3.15米 x 2.6米超大海景落地窗&nbsp;</td>
+                          <td>‧太平洋景觀大陽台&nbsp;</td>
+                          <td>‧乾濕分離獨立衛浴&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td colspan="6">
+                            ‧ADSL寬頻網路+wifi無線網路(請自備電腦)&nbsp;　　‧提供盥洗用品
+                            / 熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 /
+                            健康拖鞋　　‧提供活力早餐
+                          </td>
+                        </tr>
+                      </tbody></table>
+                      　　　　　　　　 　　　　　<br>
+                      　　　
+                    </div>
+
+                    <div id="products">
+                      <div class="slides_container" style="overflow: hidden; position: relative; display: block;">
+                        <div class="slides_control" style="position: relative; width: 2400px; height: 480px; left: -800px;"><img src="image/room5/p1.jpg?1790009359248" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room5/p2.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room5/p3.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0;"><img src="image/room5/p4.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room5/p5.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room5/p6.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room5/p7.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"><img src="image/room5/p8.jpg" width="800" height="480" style="position: absolute; top: 0px; left: 800px; z-index: 0; display: none;"></div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                      </div>
+                      <table cellpadding="0" cellspacing="0">
+                        <tbody><tr>
+                          <td>
+                            <ul class="pagination" style="
+                                margin: 0;
+                                padding: 0;
+                                list-style-type: none;
+                              ">
+                              <li class="">
+                                <a class="naz" href="#0"><img src="image/room5/p1s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="">
+                                <a class="naz" href="#1"><img src="image/room5/p2s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li class="current">
+                                <a class="naz" href="#2"><img src="image/room5/p3s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#3"><img src="image/room5/p4s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#4"><img src="image/room5/p5s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#5"><img src="image/room5/p6s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#6"><img src="image/room5/p7s.jpg" width="80" height="53"></a>
+                              </li>
+                              <li>
+                                <a class="naz" href="#7"><img src="image/room5/p8s.jpg" width="80" height="53"></a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody></table>
+                    </div>
+                  </div>

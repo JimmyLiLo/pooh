@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>住房介紹｜羊角村民宿</title>
+  <meta name="description" content="花蓮羊角村民宿房型介紹，面山望海，多種房型任您選擇。" />
+  <meta name="keywords" content="羊角村民宿,花蓮住宿,花蓮民宿房型,花蓮海景房" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── room 頁專用 ── */
+    .room-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* 房型頁籤 */
+    .room-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #2a2510;
+      border-bottom: 1px solid #3a3018;
+    }
+
+    .room-tabs button {
+      flex: 1 1 auto;
+      min-width: 140px;
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      letter-spacing: 0.04em;
+      padding: 0.9rem 0.6rem;
+      border: none;
+      border-right: 1px solid #3a3018;
+      background: none;
+      cursor: pointer;
+      text-align: center;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .room-tabs button:last-child {
+      border-right: none;
+    }
+
+    .room-tabs button:hover {
+      background-color: rgba(200,151,58,0.1);
+      color: var(--color-gold);
+    }
+
+    .room-tabs button.is-active {
+      background-color: var(--color-gold);
+      color: var(--color-white);
+      font-weight: 500;
+    }
+
+    /* 房型詳情區 */
+    .room-detail {
+      background-color: #241f10;
+      padding: var(--space-lg);
+    }
+
+    .room-detail-title {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* 房價 */
+    .room-price {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      line-height: 2;
+      margin-bottom: 1.2rem;
+    }
+
+    .room-price .price-label {
+      color: var(--color-sand-dk);
+    }
+
+    .room-price .price-value {
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-right: 1.2rem;
+    }
+
+    /* 客房設施表格 */
+    .room-amenities-title {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      margin-bottom: 0.5rem;
+    }
+
+    .room-amenities {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    .room-amenities td {
+      border: 1px solid #3a3018;
+      padding: 0.6rem 0.8rem;
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      color: var(--color-sand);
+      line-height: 1.7;
+    }
+
+    .room-amenities td.full-row {
+      background-color: rgba(200,151,58,0.05);
+    }
+
+    /* 待補資料提示 */
+    .room-todo {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand-dk);
+      padding: 2rem;
+      text-align: center;
+      border: 1px dashed #4a3f28;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 輪播 */
+    .room-slideshow {
+      position: relative;
+      background-color: #000;
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 0.6rem;
+    }
+
+    .room-slideshow-track {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 800 / 480;
+    }
+
+    .room-slideshow-track img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .room-slideshow-track img.is-active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .room-slideshow-pagination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .room-slideshow-pagination button {
+      flex: 1 0 auto;
+      padding: 0;
+      border: 2px solid transparent;
+      background: none;
+      cursor: pointer;
+      line-height: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      opacity: 0.55;
+      transition: opacity var(--transition), border-color var(--transition);
+    }
+
+    .room-slideshow-pagination button img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .room-slideshow-pagination button.is-active,
+    .room-slideshow-pagination button:hover {
+      opacity: 1;
+      border-color: var(--color-gold);
+    }
+
+    /* 快速連結列 */
+    .room-quicklinks {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0;
+      padding: 1rem var(--space-md);
+      background-color: #2a2510;
+      border-top: 1px solid #3a3018;
+    }
+
+    .room-quicklinks a {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      letter-spacing: 0.06em;
+      padding: 4px 1.1rem;
+      border-right: 1px solid rgba(200,180,150,0.3);
+      transition: color var(--transition);
+    }
+
+    .room-quicklinks a:last-child {
+      border-right: none;
+    }
+
+    .room-quicklinks a:hover {
+      color: var(--color-gold);
+    }
+
+    /* room-quicklinks 改用 button，維持相同外觀 */
+    .room-quicklinks button.quicklink-btn {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      letter-spacing: 0.06em;
+      padding: 4px 1.1rem;
+      border: none;
+      border-right: 1px solid rgba(200,180,150,0.3);
+      background: none;
+      cursor: pointer;
+      transition: color var(--transition);
+    }
+
+    .room-quicklinks button.quicklink-btn:last-child {
+      border-right: none;
+    }
+
+    .room-quicklinks button.quicklink-btn:hover {
+      color: var(--color-gold);
+    }
+
+    /* ── 資訊彈窗 Modal（取代訂房需知等獨立頁面） ── */
+    .info-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(10, 8, 4, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .info-modal.is-open {
+      display: flex;
+    }
+
+    .info-modal-box {
+      background-color: #241f10;
+      border: 1px solid #4a3f28;
+      border-radius: 6px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: var(--space-lg);
+      box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .info-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 1px solid rgba(200,180,150,0.3);
+      color: var(--color-sand);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      line-height: 1;
+      cursor: pointer;
+      transition: background-color var(--transition), color var(--transition);
+    }
+
+    .info-modal-close:hover {
+      background-color: var(--color-gold);
+      color: var(--color-white);
+      border-color: var(--color-gold);
+    }
+
+    .info-modal-title {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--color-gold);
+      text-align: center;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.8rem;
+    }
+
+    .info-modal-divider {
+      height: 1px;
+      background-color: #4a3f28;
+      margin-bottom: 1.2rem;
+    }
+
+    .info-modal-body {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      line-height: 1.9;
+    }
+
+    .info-modal-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-modal-body li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .info-modal-body li::before {
+      content: '‧';
+      position: absolute;
+      left: 0;
+      color: var(--color-gold);
+    }
+
+    .info-modal-body .hl-yellow {
+      color: #ffe27a;
+    }
+
+    .info-modal-body .hl-orange {
+      color: #ffb366;
+      font-weight: 600;
+    }
+
+    .info-modal-body .modal-note {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #4a3f28;
+    }
+
+    @media (max-width: 640px) {
+      .room-tabs button {
+        min-width: 33%;
+        font-size: var(--text-xs);
+      }
+
+      .room-detail {
+        padding: var(--space-md);
+      }
+
+      .room-amenities td {
+        font-size: 0.68rem;
+        padding: 0.4rem 0.5rem;
+      }
+
+      .info-modal-box {
+        padding: var(--space-md);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 浮動訂房按鈕 -->
+  <div class="booking-wrap">
+    <span class="booking-arrow"></span>
+    <a class="booking-fab"
+       href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD"
+       target="_blank">
+      線上訂房
+      <span class="fab-sub">Online Booking</span>
+    </a>
+  </div>
+
+  <header class="site-header">
+    <img class="header-bg"
+         src="http://www.giethoorn.com.tw/image/news-1.jpg"
+         alt="住房介紹" />
+    <nav class="site-nav">
+      <a href="index.html">首頁</a>
+      <a href="about.html">羊角村風情</a>
+      <a href="news.html">最新消息</a>
+      <a href="room.html" class="nav--active">住房介紹</a>
+      <a href="map.html">交通指南</a>
+      <a href="gallery.html">相簿</a>
+      <a href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD">線上訂房</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="room-container">
+
+      <!-- 房型頁籤，由 JS 動態產生 -->
+      <div class="room-tabs" id="roomTabs"></div>
+
+      <!-- 房型詳情，由 JS 動態產生 -->
+      <div class="room-detail" id="roomDetail"></div>
+
+      <!-- 快速連結：訂房/住房須知等 → 點擊開啟彈窗 -->
+      <div class="room-quicklinks">
+        <button class="quicklink-btn" data-modal="orderNote1">訂房需知</button>
+        <button class="quicklink-btn" data-modal="orderNote3">住房需知</button>
+        <button class="quicklink-btn" data-modal="orderNote4">退訂說明</button>
+        <button class="quicklink-btn" data-modal="equipment">客房設備</button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- 資訊彈窗（訂房需知 / 住房需知 / 退訂說明 / 客房設備） -->
+  <div class="info-modal" id="infoModal">
+    <div class="info-modal-box">
+      <button class="info-modal-close" id="infoModalClose">✕</button>
+      <h3 class="info-modal-title" id="infoModalTitle"></h3>
+      <div class="info-modal-divider"></div>
+      <div class="info-modal-body" id="infoModalBody"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>版權所有 © 2008 花蓮羊角村民宿 Giethoorn Taiwan All Rights Reserved.</p>
+      <p>Designed by <a href="http://www.moredesign.com.tw" target="_blank">摩洱設計</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ==============================================
+       房型資料 — 取代原本各自獨立的 room1~5.html
+       之後要調整價格/設施/照片，改這個陣列即可
+       room4 已依實際資料填好；room1/2/3/5 待補實際內容
+       ============================================== */
+    const roomsData = [
+      {
+        id: 'room1',
+        name: '浪漫海景雙人房',
+        titleImg: 'image/room1-title.png',
+        ready: true,
+        prices: [
+          { label: '一般平日', value: '3,200' },
+          { label: '暑假平日', value: '3,500' },
+          { label: '假日(週六)', value: '3,900' },
+          { label: '農曆春節', value: '4,800' }
+        ],
+        amenities: [
+          ['‧日立變頻分離式冷暖氣機', '‧竹炭纖維獨立筒床墊', '‧37吋液晶電視(有線頻道)', '‧3.15米 x 2.6米超大海景落地窗', '‧太平洋景觀大陽台', '‧乾濕分離獨立衛浴'],
+          ['‧ADSL寬頻網路+wifi無線網路(請自備電腦)　　‧熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 / 健康拖鞋　　']
+        ],
+        photosFolder: 'image/room1/',
+        photos: [
+          { full: 'p1.jpg', thumb: 'p1s.jpg' },
+          { full: 'p2.jpg', thumb: 'p2s.jpg' },
+          { full: 'p3.jpg', thumb: 'p3s.jpg' },
+          { full: 'p4.jpg', thumb: 'p4s.jpg' },
+          { full: 'p5.jpg', thumb: 'p5s.jpg' },
+          { full: 'p6.jpg', thumb: 'p6s.jpg' },
+          { full: 'p7.jpg', thumb: 'p7s.jpg' },
+          { full: 'p8.jpg', thumb: 'p8s.jpg' }
+        ]
+      },
+      {
+        id: 'room2',
+        name: '豪華海景雙人房',
+        titleImg: 'image/room2-title.png',
+        ready: true,
+        prices: [
+          { label: '一般平日', value: '3,600' },
+          { label: '暑假平日', value: '3,900' },
+          { label: '假日(週六)', value: '4,300' },
+          { label: '農曆春節', value: '5,300' }
+        ],
+        amenities: [
+          ['‧日立變頻分離式冷暖氣機', '‧竹炭纖維獨立筒床墊', '‧37吋液晶電視(有線頻道)', '‧3.15米 x 2.6米超大海景落地窗', '‧太平洋景觀大陽台', '‧乾濕分離獨立衛浴'],
+          ['‧ADSL寬頻網路+wifi無線網路(請自備電腦)　　‧熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 / 健康拖鞋　　']
+        ],
+        photosFolder: 'image/room2/',
+        photos: [
+          { full: 'p1.jpg', thumb: 'p1s.jpg' },
+          { full: 'p2.jpg', thumb: 'p2s.jpg' },
+          { full: 'p3.jpg', thumb: 'p3s.jpg' },
+          { full: 'p4.jpg', thumb: 'p4s.jpg' },
+          { full: 'p5.jpg', thumb: 'p5s.jpg' },
+          { full: 'p6.jpg', thumb: 'p6s.jpg' },
+          { full: 'p7.jpg', thumb: 'p7s.jpg' },
+          { full: 'p8.jpg', thumb: 'p8s.jpg' },
+          { full: 'p9.jpg', thumb: 'p9s.jpg' }
+        ]
+      },
+      {
+        id: 'room3',
+        name: '豪華海景四人房(1F)',
+        titleImg: 'image/room3-title.png',
+        ready: true,
+        prices: [
+          { label: '一般平日', value: '4,200' },
+          { label: '暑假平日', value: '4,500' },
+          { label: '假日(週六)', value: '4,900' },
+          { label: '農曆春節', value: '6,300' }
+        ],
+        amenities: [
+          ['‧日立變頻分離式冷暖氣機', '‧竹炭纖維獨立筒床墊', '‧37吋液晶電視(有線頻道)', '‧3.15米 x 2.6米超大海景落地窗', '‧太平洋景觀大陽台', '‧乾濕分離獨立衛浴'],
+          ['‧ADSL寬頻網路+wifi無線網路(請自備電腦)　　‧熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 / 健康拖鞋　　']
+        ],
+        photosFolder: 'image/room3/',
+        photos: [
+          { full: 'p1.jpg', thumb: 'p1s.jpg' },
+          { full: 'p2.jpg', thumb: 'p2s.jpg' },
+          { full: 'p3.jpg', thumb: 'p3s.jpg' },
+          { full: 'p4.jpg', thumb: 'p4s.jpg' },
+          { full: 'p5.jpg', thumb: 'p5s.jpg' },
+          { full: 'p6.jpg', thumb: 'p6s.jpg' },
+          { full: 'p7.jpg', thumb: 'p7s.jpg' },
+          { full: 'p8.jpg', thumb: 'p8s.jpg' }
+        ]
+      },
+      {
+        id: 'room5',
+        name: '豪華海景四人房(2F)',
+        titleImg: 'image/room5-title.png',
+        ready: true,
+        prices: [
+          { label: '一般平日', value: '4,200' },
+          { label: '暑假平日', value: '4,500' },
+          { label: '假日(週六)', value: '4,900' },
+          { label: '農曆春節', value: '6,300' }
+        ],
+        amenities: [
+          ['‧日立變頻分離式冷暖氣機', '‧竹炭纖維獨立筒床墊', '‧37吋液晶電視(有線頻道)', '‧3.15米 x 2.6米超大海景落地窗', '‧太平洋景觀大陽台', '‧乾濕分離獨立衛浴'],
+          ['‧ADSL寬頻網路+wifi無線網路(請自備電腦)　　‧熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 / 健康拖鞋　　']
+        ],
+        photosFolder: 'image/room5/',
+        photos: [
+          { full: 'p1.jpg', thumb: 'p1s.jpg' },
+          { full: 'p2.jpg', thumb: 'p2s.jpg' },
+          { full: 'p3.jpg', thumb: 'p3s.jpg' },
+          { full: 'p4.jpg', thumb: 'p4s.jpg' },
+          { full: 'p5.jpg', thumb: 'p5s.jpg' },
+          { full: 'p6.jpg', thumb: 'p6s.jpg' },
+          { full: 'p7.jpg', thumb: 'p7s.jpg' },
+          { full: 'p8.jpg', thumb: 'p8s.jpg' }
+        ]
+      },
+      {
+        id: 'room4',
+        name: 'VIP海景四人房',
+        titleImg: 'image/room4-title.png',
+        ready: true,
+        prices: [
+          { label: '一般平日', value: '6,200' },
+          { label: '暑假平日', value: '6,500' },
+          { label: '假日(週六)', value: '6,900' },
+          { label: '農曆春節', value: '8,800' }
+        ],
+        amenities: [
+          ['‧日立變頻分離式冷暖氣機', '‧竹炭纖維獨立筒床墊', '‧37吋液晶電視(有線頻道)', '‧180度全景超大海景落地窗', '‧太平洋景觀大陽台', '‧乾濕分離獨立衛浴'],
+          ['‧ADSL寬頻網路+wifi無線網路(請自備電腦)　　‧熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 / 健康拖鞋　　']
+        ],
+        photosFolder: 'image/room4/',
+        photos: [
+          { full: 'p1.jpg', thumb: 'p1s.jpg' },
+          { full: 'p2.jpg', thumb: 'p2s.jpg' },
+          { full: 'p3.jpg', thumb: 'p3s.jpg' },
+          { full: 'p4.jpg', thumb: 'p4s.jpg' },
+          { full: 'p5.jpg', thumb: 'p5s.jpg' },
+          { full: 'p6.jpg', thumb: 'p6s.jpg' },
+          { full: 'p7.jpg', thumb: 'p7s.jpg' },
+          { full: 'p8.jpg', thumb: 'p8s.jpg' }
+        ]
+      }
+    ];
+
+    /* ==============================================
+       純 ES6 房型頁籤 + 輪播邏輯
+       ============================================== */
+    (() => {
+      const tabsEl   = document.getElementById('roomTabs');
+      const detailEl = document.getElementById('roomDetail');
+
+      let currentRoomIndex = roomsData.findIndex(r => r.ready) >= 0
+        ? roomsData.findIndex(r => r.ready)
+        : 0;
+
+      let slideIndex = 0;
+      let slideTimer = null;
+
+      // 產生頁籤
+      const renderTabs = () => {
+        tabsEl.innerHTML = '';
+        roomsData.forEach((room, i) => {
+          const btn = document.createElement('button');
+          btn.textContent = room.name;
+          if (i === currentRoomIndex) btn.classList.add('is-active');
+          btn.addEventListener('click', () => {
+            currentRoomIndex = i;
+            slideIndex = 0;
+            renderTabs();
+            renderDetail();
+          });
+          tabsEl.appendChild(btn);
+        });
+      };
+
+      // 產生詳情內容
+      const renderDetail = () => {
+        clearInterval(slideTimer);
+        const room = roomsData[currentRoomIndex];
+
+        if (!room.ready) {
+          detailEl.innerHTML = `
+            <h2 class="room-detail-title">${room.name}</h2>
+            <div class="room-todo">此房型資料準備中，敬請期待</div>
+          `;
+          return;
+        }
+
+        // 房價
+        const priceHtml = room.prices
+          .map(p => `<span class="price-label">${p.label}：</span><span class="price-value">${p.value}</span>`)
+          .join('　　');
+
+        // 設施表格
+        const amenitiesHtml = room.amenities
+          .map(row => {
+            if (row.length === 1) {
+              return `<tr><td class="full-row" colspan="6">${row[0]}</td></tr>`;
+            }
+            return `<tr>${row.map(cell => `<td>${cell}</td>`).join('')}</tr>`;
+          })
+          .join('');
+        // <div class="room-price">房價：　${priceHtml}</div>
+        detailEl.innerHTML = `
+          <h2 class="room-detail-title">${room.name}</h2>
+
+          <div class="room-amenities-title">客房設施</div>
+          <table class="room-amenities"><tbody>${amenitiesHtml}</tbody></table>
+
+          <div class="room-slideshow">
+            <div class="room-slideshow-track" id="roomSlideTrack"></div>
+          </div>
+          <div class="room-slideshow-pagination" id="roomSlidePagination"></div>
+        `;
+
+        renderSlideshow(room);
+      };
+
+      // 產生輪播
+      const renderSlideshow = (room) => {
+        const trackEl = document.getElementById('roomSlideTrack');
+        const pagiEl  = document.getElementById('roomSlidePagination');
+
+        trackEl.innerHTML = room.photos.map((p, i) => `
+          <img src="${room.photosFolder}${p.full}" alt="${room.name} ${i + 1}" class="${i === 0 ? 'is-active' : ''}" />
+        `).join('');
+
+        pagiEl.innerHTML = room.photos.map((p, i) => `
+          <button class="${i === 0 ? 'is-active' : ''}" data-index="${i}">
+            <img src="${room.photosFolder}${p.thumb}" alt="縮圖${i + 1}" />
+          </button>
+        `).join('');
+
+        const slides = trackEl.querySelectorAll('img');
+        const dots   = pagiEl.querySelectorAll('button');
+
+        const goTo = (index) => {
+          slides[slideIndex].classList.remove('is-active');
+          dots[slideIndex].classList.remove('is-active');
+          slideIndex = (index + slides.length) % slides.length;
+          slides[slideIndex].classList.add('is-active');
+          dots[slideIndex].classList.add('is-active');
+        };
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => {
+            goTo(i);
+            startAutoplay();
+          });
+        });
+
+        const startAutoplay = () => {
+          clearInterval(slideTimer);
+          if (slides.length <= 1) return;
+          slideTimer = setInterval(() => goTo(slideIndex + 1), 4000);
+        };
+
+        startAutoplay();
+      };
+
+      renderTabs();
+      renderDetail();
+    })();
+
+    /* ==============================================
+       資訊彈窗資料 — 取代原本 order-note1/3/4、equipment.html
+       之後要改文案，直接改這裡的文字即可
+       ============================================== */
+    const infoModalData = {
+      orderNote1: {
+        title: '訂房需知',
+        html: `
+          <ul>
+            <li>本民宿自2012年10月下旬起，已全面採用線上訂房系統訂房，請您依照訂房系統中相關的說明訂房，謝謝您。</li>
+            <li>如您需電話預約訂房，請於每日 <span class="hl-orange">9:30~21:30</span> 來電。民宿與飯店不同，並沒有值班的客服人員喔～</li>
+          </ul>
+          <p class="modal-note hl-yellow">歡迎使用國民旅遊卡與刷卡服務</p>
+        `
+      },
+      orderNote3: {
+        title: '住房需知',
+        html: `
+          <ul>
+            <li><span class="hl-yellow">民宿不開放寵物入住</span>，為了維護住宿品質，<span class="hl-yellow">請勿攜帶寵物</span>，不便處請見諒，若自行攜帶寵物者，將拒絕房客住宿；若已付訂金，將不退還訂金。</li>
+            <li>進房時間為每日15:00 ~ 20:00，若無法於時間內進房者，務必聯絡，以便為您保留房間。</li>
+            <li>預定之房型若『超額入住』會酌收費用，(身高超過 115cm)加人：NT$ 400元/人；春節期間：NT$ 800元。加床：NT$ 600元/ 床；春節期間：NT$ 1000元/ 床。---均附早餐、盥洗用具(加床者再含床墊組)</li>
+            <li>115公分以下孩童免費入住。</li>
+            <li>加被100元 / 件；加枕頭 50元 / 件</li>
+            <li>Check in 進房：PM3:00，Check out 退房：AM 11:00。</li>
+            <li>未能如期入住者，請於(一個禮拜) <span class="hl-orange">7日以前</span> 告知延期，訂金保留期限為半年，採延期方式(改期僅限一次)。</li>
+            <li>室內禁煙，請勿酗酒。</li>
+          </ul>
+        `
+      },
+      orderNote4: {
+        title: '退訂說明',
+        html: `
+          <p style="margin-bottom:0.8rem;">依據觀光局國民旅遊規定：</p>
+          <ul>
+            <li>住房當日退訂，恕不退還訂金。(無法延期保留)</li>
+            <li>離住房日前一天，退還已付訂金比例之 20%。(無法延期保留)</li>
+            <li>離住房日前2天至3天之間，退還已付訂金比例之30%。(無法延期保留)</li>
+            <li>離住房日前4天至6天之間，退還已付訂金比例之40%。(無法延期保留)</li>
+            <li>離住房日前7天至9天之間，退還已付訂金比例之50%。</li>
+            <li>離住房日前10天至13天之間，退還已付訂金比例之70%。</li>
+            <li>離住房曰前14天至200天之間，退還已付訂金比例之90%。</li>
+            <li>如於預訂住宿當日，遇颱風、地震等不可抗拒因素時，以民宿所在地縣市政府頒布狀況為判定準則。可退還全額訂金或保留訂金一次，以半年為期限。</li>
+          </ul>
+          <p class="modal-note">
+            ◎ 未能如期入住者，請於(一個禮拜) <span class="hl-orange">7日以前</span> 告知延期，訂金保留期限為半年，採延期方式(改期僅限一次)。<br />
+            <span class="hl-yellow">◎ 匯款完成訂房手續者，視為同意本訂房之相關規定！</span>
+          </p>
+        `
+      },
+      equipment: {
+        title: '客房設備',
+        html: `
+          <ul>
+            <li>日立變頻分離式冷暖氣機</li>
+            <li>竹炭纖維獨立筒床墊</li>
+            <li>37吋(VIP房42吋)液晶電視(有線頻道)</li>
+            <li>3.15米 x 2.6米超大海景落地窗</li>
+            <li>太平洋景觀大陽台</li>
+            <li>乾濕分離獨立衛浴</li>
+            <li>ADSL寬頻網路(請自備電腦)</li>
+            <li>熱水壼 / 吹風機 / 茶包 / 咖啡 / 礦泉水 / 健康拖鞋</li>
+            <li>超寬廣停車空間</li>
+            <li>提供給住宿的客人電動車充電樁</li>
+          </ul>
+        `
+      }
+    };
+
+    /* ==============================================
+       純 ES6 彈窗控制
+       ============================================== */
+    (() => {
+      const modal      = document.getElementById('infoModal');
+      const modalTitle = document.getElementById('infoModalTitle');
+      const modalBody  = document.getElementById('infoModalBody');
+      const modalClose = document.getElementById('infoModalClose');
+
+      const openModal = (key) => {
+        const data = infoModalData[key];
+        if (!data) return;
+        modalTitle.textContent = data.title;
+        modalBody.innerHTML = data.html;
+        modal.classList.add('is-open');
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+      };
+
+      document.querySelectorAll('[data-modal]').forEach(btn => {
+        btn.addEventListener('click', () => openModal(btn.dataset.modal));
+      });
+
+      modalClose.addEventListener('click', closeModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(); // 點背景關閉
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+    })();
+  </script>
+</body>
+</html>

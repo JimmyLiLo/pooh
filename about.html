@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>羊角村風情｜羊角村民宿</title>
+  <meta name="description" content="花蓮羊角村民宿，位於花蓮東海岸之優質合法民宿，面山望海，環境清幽。" />
+  <meta name="keywords" content="羊角村民宿,花蓮民宿,花蓮東海岸,花蓮海景民宿" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── 統一外層容器，確保所有區塊絕對對齊 ── */
+    .about-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .about-slideshow {
+      position: relative;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .slideshow-track {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 974 / 360;
+    }
+
+    .slideshow-track img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    .slideshow-track img.is-active {
+      opacity: 1;
+      position: relative; /* 保留版面高度基準 */
+    }
+
+    /* 縮圖分頁 */
+    .slideshow-pagination {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .slideshow-pagination button {
+      flex: 1 0 auto;
+      padding: 0;
+      border: none;
+      background: none;
+      cursor: pointer;
+      line-height: 0;
+      opacity: 0.55;
+      transition: opacity 0.25s ease;
+    }
+
+    .slideshow-pagination button img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .slideshow-pagination button.is-active,
+    .slideshow-pagination button:hover {
+      opacity: 1;
+    }
+
+    /* 手機版：縮圖太多會被擠壓，改成可橫向滑動 */
+    @media (max-width: 640px) {
+      .slideshow-pagination {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .slideshow-pagination button {
+        flex: 0 0 70px;
+      }
+
+      .about-info {
+        padding: var(--space-md);
+      }
+    }
+
+    /* 大圖區 */
+    .about-photo {
+      display: block;
+      line-height: 0;
+    }
+    .about-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 介紹文字條 */
+    .about-info {
+      background-color: #2a2510;
+      padding: var(--space-md) var(--space-lg);
+      text-align: right;
+      box-sizing: border-box;
+    }
+
+    .about-info p {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      line-height: 1.9;
+    }
+
+    .about-info p a {
+      color: var(--color-gold);
+    }
+
+    .about-info .about-copyright {
+      font-size: var(--text-xs);
+      color: #7a6a58;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 浮動訂房按鈕 -->
+  <div class="booking-wrap">
+    <span class="booking-arrow"></span>
+    <a class="booking-fab"
+       href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD"
+       target="_blank">
+      線上訂房
+      <span class="fab-sub">Online Booking</span>
+    </a>
+  </div>
+
+  <header class="site-header">
+    <img class="header-bg"
+         src="http://www.giethoorn.com.tw/image/about-0.jpg"
+         alt="羊角村風情" />
+    <nav class="site-nav">
+      <a href="index.html">首頁</a>
+      <a href="about.html" class="nav--active">羊角村風情</a>
+      <a href="news.html">最新消息</a>
+      <a href="room.html">住房介紹</a>
+      <a href="map.html">交通指南</a>
+      <a href="gallery.html">相簿</a>
+      <a href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD">線上訂房</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="about-container">
+
+      <!-- 輪播圖 -->
+      <div class="about-slideshow">
+        <div class="slideshow-track" id="slideshowTrack">
+          <img src="http://www.giethoorn.com.tw/image/about/p1.jpg" alt="羊角村風情 1" class="is-active" />
+          <img src="http://www.giethoorn.com.tw/image/about/p2.jpg" alt="羊角村風情 2" />
+          <img src="http://www.giethoorn.com.tw/image/about/p3.jpg" alt="羊角村風情 3" />
+          <img src="http://www.giethoorn.com.tw/image/about/p4.jpg" alt="羊角村風情 4" />
+          <img src="http://www.giethoorn.com.tw/image/about/p5.jpg" alt="羊角村風情 5" />
+          <img src="http://www.giethoorn.com.tw/image/about/p6.jpg" alt="羊角村風情 6" />
+          <img src="http://www.giethoorn.com.tw/image/about/p7.jpg" alt="羊角村風情 7" />
+          <img src="http://www.giethoorn.com.tw/image/about/p8.jpg" alt="羊角村風情 8" />
+          <img src="http://www.giethoorn.com.tw/image/about/p9.jpg" alt="羊角村風情 9" />
+        </div>
+
+        <div class="slideshow-pagination" id="slideshowPagination">
+          <button class="is-active" data-index="0"><img src="http://www.giethoorn.com.tw/image/about/p1s.jpg" alt="縮圖1" /></button>
+          <button data-index="1"><img src="http://www.giethoorn.com.tw/image/about/p2s.jpg" alt="縮圖2" /></button>
+          <button data-index="2"><img src="http://www.giethoorn.com.tw/image/about/p3s.jpg" alt="縮圖3" /></button>
+          <button data-index="3"><img src="http://www.giethoorn.com.tw/image/about/p4s.jpg" alt="縮圖4" /></button>
+          <button data-index="4"><img src="http://www.giethoorn.com.tw/image/about/p5s.jpg" alt="縮圖5" /></button>
+          <button data-index="5"><img src="http://www.giethoorn.com.tw/image/about/p6s.jpg" alt="縮圖6" /></button>
+          <button data-index="6"><img src="http://www.giethoorn.com.tw/image/about/p7s.jpg" alt="縮圖7" /></button>
+          <button data-index="7"><img src="http://www.giethoorn.com.tw/image/about/p8s.jpg" alt="縮圖8" /></button>
+          <button data-index="8"><img src="http://www.giethoorn.com.tw/image/about/p9s.jpg" alt="縮圖9" /></button>
+        </div>
+      </div>
+
+      <!-- 大圖 -->
+      <div class="about-photo">
+        <img src="http://www.giethoorn.com.tw/image/about-5.jpg" alt="羊角村環境" />
+      </div>
+      <div class="about-photo">
+        <img src="http://www.giethoorn.com.tw/image/about-6-1.jpg" alt="" />
+      </div>
+
+      <!-- 介紹文字 -->
+      <div class="about-info">
+        <p>
+          <a href="index.html">花蓮民宿</a>
+          海是那麼的近，那麼的湛藍，山是那麼的綠，那麼接近自然，
+          倚臥在窗臺前的長椅，仔細聆聽大自然發出的聲音。
+        </p>
+        <p>
+          訂房專線：0988-655021 黃小姐　0932-651152 吳先生　傳真：03-8671151<br />
+          地址：花蓮縣壽豐鄉鹽寮村福德51號
+        </p>
+        <p class="about-copyright">版權所有 © 2008 花蓮羊角村民宿 Giethoorn Taiwan All Rights Reserved.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>版權所有 © 2008 花蓮羊角村民宿 Giethoorn Taiwan All Rights Reserved.</p>
+      <p>Designed by <a href="http://www.moredesign.com.tw" target="_blank">摩洱設計</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // ── 純 ES6 輪播，取代原本 jQuery slides 套件 ──
+    (() => {
+      const slides = document.querySelectorAll('#slideshowTrack img');
+      const dots   = document.querySelectorAll('#slideshowPagination button');
+      let current = 0;
+      let timer;
+
+      const goTo = (index) => {
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+      };
+
+      const next = () => goTo(current + 1);
+
+      const startAutoplay = () => {
+        clearInterval(timer);
+        timer = setInterval(next, 4000);
+      };
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          goTo(i);
+          startAutoplay(); // 手動點擊後重新計時
+        });
+      });
+
+      startAutoplay();
+    })();
+  </script>
+</body>
+</html>

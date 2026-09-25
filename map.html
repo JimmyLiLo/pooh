@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>交通指南｜羊角村民宿</title>
+  <meta name="description" content="花蓮羊角村民宿交通指南，位於花蓮縣壽豐鄉鹽寮村，台11線11.3K處。" />
+  <meta name="keywords" content="羊角村民宿,花蓮交通,花蓮民宿地址,鹽寮村" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── map 頁專用 ── */
+    .map-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* 地圖嵌入區（取代原本 Flash 地圖） */
+    .map-embed-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 973 / 591;
+      background-color: #1a1610;
+    }
+
+    .map-embed-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Google 地圖開啟按鈕 */
+    .map-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 10;
+
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-white);
+      background-color: rgba(42, 37, 16, 0.9);
+      border: 1px solid var(--color-gold);
+      padding: 0.5rem 1rem;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      transition: background-color var(--transition);
+    }
+
+    .map-open-btn:hover {
+      background-color: var(--color-gold);
+    }
+
+    /* 環境圖 */
+    .map-photo {
+      line-height: 0;
+    }
+    .map-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 周邊景點連結 + 聯絡資訊 */
+    .map-info {
+      background-color: #2a2510;
+      padding: var(--space-lg) var(--space-lg);
+      text-align: right;
+    }
+
+    .map-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: var(--space-lg);
+    }
+
+    .map-links a {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      transition: color var(--transition);
+    }
+
+    .map-links a:hover {
+      color: var(--color-gold);
+    }
+
+    .map-contact {
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      line-height: 1.9;
+    }
+
+    .map-contact .map-copyright {
+      font-size: var(--text-xs);
+      color: #7a6a58;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 640px) {
+      .map-info {
+        padding: var(--space-md);
+      }
+
+      .map-links {
+        gap: 0.5rem;
+        margin-bottom: var(--space-md);
+      }
+
+      .map-open-btn {
+        font-size: var(--text-xs);
+        padding: 0.4rem 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 浮動訂房按鈕 -->
+  <div class="booking-wrap">
+    <span class="booking-arrow"></span>
+    <a class="booking-fab"
+       href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD"
+       target="_blank">
+      線上訂房
+      <span class="fab-sub">Online Booking</span>
+    </a>
+  </div>
+
+  <header class="site-header">
+    <img class="header-bg"
+         src="http://www.giethoorn.com.tw/image/news-1.jpg"
+         alt="交通指南" />
+    <nav class="site-nav">
+      <a href="index.html">首頁</a>
+      <a href="about.html">羊角村風情</a>
+      <a href="news.html">最新消息</a>
+      <a href="room.html">住房介紹</a>
+      <a href="map.html" class="nav--active">交通指南</a>
+      <a href="gallery.html">相簿</a>
+      <a href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD">線上訂房</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="map-container">
+
+      <!-- 地圖：取代原本已停用的 Flash 地圖 -->
+      <div class="map-embed-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=23.88330,121.60072&z=15&output=embed"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="羊角村民宿位置地圖">
+        </iframe>
+        <a class="map-open-btn"
+           href="https://www.google.com/maps?q=23.88330,121.60072"
+           target="_blank">
+          在 Google 地圖開啟 ↗
+        </a>
+      </div>
+
+      <!-- 環境圖 -->
+      <div class="map-photo">
+        <img src="http://www.giethoorn.com.tw/image/map-5.jpg" alt="羊角村周邊環境" />
+      </div>
+
+      <!-- 周邊景點連結 + 聯絡資訊 -->
+      <div class="map-info">
+        <div class="map-links">
+          <a href="https://tour-hualien.hl.gov.tw" target="_blank">花蓮縣政府觀光資訊網</a>
+          <a href="http://www.eastcoast-nsa.gov.tw" target="_blank">東部海岸國家風景區觀光旅遊資訊網</a>
+          <a href="https://www.taroko.gov.tw" target="_blank">太魯閣國家公園</a>
+        </div>
+
+        <div class="map-contact">
+          <p>
+            訂房專線：0988-655021 黃小姐　0932-651152 吳先生　傳真：03-8671151<br />
+            地址：花蓮縣壽豐鄉鹽寮村福德51號
+          </p>
+          <p class="map-copyright">版權所有 © 2008 花蓮羊角村民宿 Giethoorn Taiwan All Rights Reserved.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>版權所有 © 2008 花蓮羊角村民宿 Giethoorn Taiwan All Rights Reserved.</p>
+      <p>Designed by <a href="http://www.moredesign.com.tw" target="_blank">摩洱設計</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

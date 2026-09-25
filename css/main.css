@@ -1,0 +1,545 @@
+/* main.css - 羊角村民宿 全站共用樣式 */
+
+/* ================================
+   CSS 變數
+   ================================ */
+:root {
+  --color-bg:      #8b7355;
+  --color-ocean:   #2a6b7c;
+  --color-sand:    #e8dcc8;
+  --color-sand-dk: #c9b99a;
+  --color-earth:   #3a2a1a;
+  --color-white:   #ffffff;
+  --color-gold:    #c8973a;
+
+  --font-body: 'Noto Serif TC', 'Georgia', serif;
+  --font-ui:   'Noto Sans TC', 'Arial', sans-serif;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+
+  --space-xs:  0.5rem;
+  --space-sm:  1rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+
+  /* 全站統一內容寬度 */
+  --max-width: 960px;
+  --radius:    4px;
+  --transition: 0.25s ease;
+}
+
+/* ================================
+   全站基礎
+   ================================ */
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-sand);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-sm);
+}
+
+/* ================================
+   Header：全站統一
+   橫幅圖置中內縮，nav 獨立橫條放在圖片下方（不疊圖）
+   ================================ */
+.site-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background-color: #1a0f08;
+}
+
+.site-header .header-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* nav：獨立橫條，緊接在圖片下方 */
+.site-nav {
+  display: flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+
+  background: linear-gradient(180deg, #2e1a0e 0%, #4a2e18 100%);
+  border-top: 1px solid #6b4226;
+}
+
+/* 連結容器：桌機版維持原本靠右橫排 */
+.site-nav-links {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.site-nav a {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-sand);
+  letter-spacing: 0.06em;
+  border-right: 1px solid rgba(200,180,150,0.3);
+  padding: 2px 0.9rem;
+  transition: color var(--transition);
+}
+
+.site-nav a:last-child {
+  border-right: none;
+}
+
+.site-nav a:hover,
+.site-nav a.nav--active {
+  color: var(--color-gold);
+}
+
+/* 漢堡按鈕：桌機版隱藏 */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  margin-left: auto;
+  border: 1px solid rgba(200,180,150,0.4);
+  border-radius: 4px;
+  background: none;
+  color: var(--color-sand);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.nav-toggle:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+/* ================================
+   浮動訂房按鈕
+   ================================ */
+.booking-wrap {
+  position: fixed;
+  top: 1.5rem;
+  right: 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  animation: arrow-bounce 1s ease-in-out infinite;
+}
+
+.booking-arrow {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  margin-right: 4px;
+}
+
+.booking-arrow::before {
+  content: '';
+  display: block;
+  width: 56px;
+  height: 2px;
+  background-color: var(--color-gold);
+  box-shadow: 0 1px 6px rgba(0,0,0,0.4);
+}
+
+.booking-arrow::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-top:    8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left:   12px solid var(--color-gold);
+}
+
+@keyframes arrow-bounce {
+  0%   { transform: translateX(10px); opacity: 0.3; }
+  50%  { transform: translateX(0px);  opacity: 1;   }
+  100% { transform: translateX(10px); opacity: 0.3; }
+}
+
+.booking-fab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  padding: 0.9rem 1.6rem;
+  border-radius: 3px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  text-decoration: none;
+  transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+.booking-fab .fab-sub {
+  font-size: var(--text-xs);
+  opacity: 0.85;
+  letter-spacing: 0.05em;
+}
+
+.booking-fab:hover {
+  background-color: #a87a2a;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+/* ================================
+   背景音樂開關（鳥叫聲）
+   ================================ */
+.sound-toggle {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 999;
+
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgba(42, 37, 16, 0.85);
+  border: 1px solid var(--color-gold);
+  border-radius: 50%;
+  color: var(--color-sand);
+  font-size: 1.2rem;
+  cursor: pointer;
+
+  box-shadow: 0 3px 12px rgba(0,0,0,0.35);
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.sound-toggle:hover {
+  background-color: var(--color-gold);
+  transform: scale(1.08);
+}
+
+.sound-toggle.is-muted {
+  opacity: 0.6;
+}
+
+/* ================================
+   Hero 主視覺（首頁大圖）— 統一內縮寬度
+   ================================ */
+.hero {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-md) 0 0;
+  line-height: 0;
+}
+
+.hero a {
+  display: block;
+  width: 100%;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+/* ================================
+   Info 聯絡資訊區
+   ================================ */
+.info-section {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm) var(--space-lg);
+  background-color: var(--color-bg);
+  color: var(--color-sand);
+}
+
+.info-section .badge-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-sm);
+}
+
+.info-section .badge-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: var(--color-sand);
+}
+
+.info-section .divider {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-sand-dk);
+  margin: var(--space-sm) auto;
+}
+
+.info-section .contact {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  line-height: 2;
+  color: var(--color-sand);
+}
+
+.info-section .contact .phone {
+  font-size: var(--text-lg);
+  color: var(--color-white);
+  letter-spacing: 0.05em;
+}
+
+.info-section .contact .hours {
+  color: var(--color-gold);
+  font-size: var(--text-xs);
+}
+
+/* ================================
+   影片連結
+   ================================ */
+.video-link {
+  display: block;
+  margin: var(--space-md) auto 0;
+  width: fit-content;
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.video-link img {
+  transition: opacity var(--transition);
+}
+
+.video-link:hover img {
+  opacity: 0.85;
+}
+
+.video-link .play-label {
+  position: absolute;
+  bottom: var(--space-xs);
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: var(--color-white);
+  background: rgba(0,0,0,0.45);
+  padding: 4px;
+}
+
+/* ================================
+   Footer — 統一內縮寬度
+   ================================ */
+.site-footer {
+  background-color: var(--color-bg);
+  color: var(--color-sand-dk);
+  text-align: center;
+  padding: var(--space-md) var(--space-sm) var(--space-lg);
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  line-height: 2;
+}
+
+.site-footer .footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  border-top: 1px solid var(--color-sand-dk);
+  padding-top: var(--space-md);
+}
+
+.site-footer a {
+  color: var(--color-sand);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+
+.site-footer a:hover {
+  border-bottom-color: var(--color-sand);
+}
+
+/* ================================
+   news 頁專用（原本寫在 news.html 內，移到全域）
+   ================================ */
+.news-body-wrap {
+  display: flex;
+  align-items: stretch;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  background-color: #2a2510;
+  border-left:  1px solid #3a3018;
+  border-right: 1px solid #3a3018;
+}
+
+.news-side-img {
+  flex: 0 0 340px;
+  line-height: 0;
+  overflow: hidden;
+}
+.news-side-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-list-area {
+  flex: 1;
+  padding: 2rem 2.5rem;
+}
+
+.news-card {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 1.2rem 0;
+}
+.news-card:first-child { padding-top: 0; }
+.news-card:last-child  { border-bottom: none; }
+
+.news-card .news-title {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-sand);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.news-card .news-excerpt {
+  font-family: var(--font-ui);
+  font-size: var(--text-sm);
+  color: #a89880;
+  line-height: 1.9;
+  margin-bottom: 0.6rem;
+}
+
+.news-card .news-date {
+  font-family: var(--font-ui);
+  font-size: var(--text-xs);
+  color: #7a6a58;
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+.news-footer-img {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  line-height: 0;
+}
+.news-footer-img img {
+  width: 100%;
+  object-fit: cover;
+}
+/* ================================
+   全站 RWD — 手機版（≤640px）
+   ================================ */
+@media (max-width: 640px) {
+
+  /* nav 改漢堡選單：預設收合，點擊展開 */
+  .site-nav {
+    flex-wrap: wrap;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav-links {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .site-nav.is-open .site-nav-links {
+    max-height: 500px;
+    margin-top: 0.5rem;
+  }
+
+  .site-nav-links a {
+    text-align: center;
+    border-right: none;
+    border-bottom: 1px solid rgba(200,180,150,0.15);
+    padding: 0.75rem 0.5rem;
+    font-size: var(--text-sm);
+  }
+
+  .site-nav-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* 浮動訂房按鈕：移到右下角，避開頂部 nav，並縮小 */
+  .booking-wrap {
+    top: auto;
+    bottom: 0.8rem;
+    right: 0.8rem;
+  }
+
+  .booking-fab {
+    padding: 0.55rem 0.9rem;
+    font-size: var(--text-xs);
+  }
+
+  .booking-fab .fab-sub {
+    display: none; /* 手機版空間有限，只留主標題 */
+  }
+
+  /* 手機版空間有限，箭頭先隱藏，只留按鈕本身 */
+  .booking-arrow {
+    display: none;
+  }
+
+  /* 聲音開關：再縮小一點 */
+  .sound-toggle {
+    top: 0.6rem;
+    left: 0.6rem;
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  /* info-section 電話等文字縮小，避免換行太破碎 */
+  .info-section .contact .phone {
+    font-size: var(--text-base);
+  }
+
+  /* footer 內距縮小 */
+  .site-footer {
+    padding: var(--space-md) var(--space-sm);
+  }
+}
+
+/* ================================
+   news 頁 RWD — 手機版：左圖右列表 改為上下堆疊
+   ================================ */
+@media (max-width: 640px) {
+  .news-body-wrap {
+    flex-direction: column;
+  }
+
+  .news-side-img {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .news-list-area {
+    padding: 1.2rem 1.2rem;
+  }
+}

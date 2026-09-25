@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>相簿｜羊角村民宿</title>
+  <meta name="description" content="花蓮羊角村民宿相簿，欣賞民宿外觀、客房空間與海景日落之美。" />
+  <meta name="keywords" content="羊角村民宿,花蓮民宿相簿,花蓮海景照片" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    /* ── gallery 頁專用 ── */
+    .gallery-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .gallery-layout {
+      display: flex;
+      align-items: stretch;
+      background-color: #2a2510;
+      min-height: 480px;
+    }
+
+    /* 左側分類選單 */
+    .gallery-categories {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      padding: 1.2rem 0;
+      border-right: 1px solid #3a3018;
+    }
+
+    .gallery-categories button {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      width: 100%;
+      text-align: left;
+      font-family: var(--font-ui);
+      font-size: var(--text-sm);
+      color: var(--color-sand);
+      letter-spacing: 0.05em;
+      padding: 0.6rem 1rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+    }
+
+    .gallery-categories button .cat-thumb {
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+    }
+
+    .gallery-categories button:hover {
+      background-color: rgba(200, 151, 58, 0.1);
+      color: var(--color-gold);
+    }
+
+    .gallery-categories button.is-active {
+      background-color: rgba(200, 151, 58, 0.15);
+      color: var(--color-gold);
+      border-left-color: var(--color-gold);
+    }
+
+    /* 右側照片格 */
+    .gallery-grid-wrap {
+      flex: 1;
+      padding: 1.2rem;
+    }
+
+    .gallery-grid-title {
+      font-family: var(--font-body);
+      font-size: var(--text-lg);
+      color: var(--color-sand);
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #3a3018;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .gallery-grid button {
+      display: block;
+      padding: 0;
+      border: 2px solid transparent;
+      background: none;
+      cursor: pointer;
+      line-height: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .gallery-grid button:hover {
+      border-color: var(--color-gold);
+    }
+
+    .gallery-grid button img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 燈箱 Lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(10, 8, 4, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .lightbox.is-open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--color-gold);
+      color: var(--color-white);
+      font-size: 1.4rem;
+      line-height: 1;
+      cursor: pointer;
+      padding: 0.5rem 0.8rem;
+      border-radius: 3px;
+      transition: background-color var(--transition);
+    }
+
+    .lightbox-close:hover,
+    .lightbox-prev:hover,
+    .lightbox-next:hover {
+      background-color: var(--color-gold);
+    }
+
+    .lightbox-close {
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+
+    .lightbox-prev {
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* 手機版：分類改上方橫排 */
+    @media (max-width: 640px) {
+      .gallery-layout {
+        flex-direction: column;
+      }
+
+      .gallery-categories {
+        flex: none;
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 1px solid #3a3018;
+        padding: 0.5rem 0;
+      }
+
+      .gallery-categories button {
+        white-space: nowrap;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+      }
+
+      .gallery-categories button.is-active {
+        border-left-color: transparent;
+        border-bottom-color: var(--color-gold);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      }
+
+      .lightbox-prev,
+      .lightbox-next {
+        padding: 0.4rem 0.6rem;
+        font-size: 1.1rem;
+      }
+
+      .lightbox-close {
+        top: 0.8rem;
+        right: 0.8rem;
+      }
+
+      .lightbox-prev {
+        left: 0.5rem;
+      }
+
+      .lightbox-next {
+        right: 0.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 浮動訂房按鈕 -->
+  <div class="booking-wrap">
+    <span class="booking-arrow"></span>
+    <a class="booking-fab"
+      href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD"
+      target="_blank">
+      線上訂房
+      <span class="fab-sub">Online Booking</span>
+    </a>
+  </div>
+
+  <header class="site-header">
+    <img class="header-bg" src="http://www.giethoorn.com.tw/image/photo_title.jpg" alt="相簿" />
+    <nav class="site-nav">
+      <a href="index.html">首頁</a>
+      <a href="about.html">羊角村風情</a>
+      <a href="news.html">最新消息</a>
+      <a href="room.html">住房介紹</a>
+      <a href="map.html">交通指南</a>
+      <a href="gallery.html" class="nav--active">相簿</a>
+      <a href="https://www.owlting.com/booking/BE/index.html?hid=a8c55e06-fe0d-462b-8e5e-8d87462f687b&v=1554249600000&l=zh_TW&curr=TWD">線上訂房</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="gallery-container">
+
+      <div class="gallery-layout">
+
+        <!-- 左側分類選單，由 JS 動態產生 -->
+        <div class="gallery-categories" id="galleryCategories"></div>
+
+        <!-- 右側照片格，由 JS 動態產生 -->
+        <div class="gallery-grid-wrap">
+          <h2 class="gallery-grid-title" id="galleryGridTitle"></h2>
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- 底部橫幅圖 -->
+    <div class="gallery-container">
+      <img src="http://www.giethoorn.com.tw/image/contact-5.jpg" alt=""
+        style="width:100%; height:auto; display:block;" />
+    </div>
+
+  </main>
+
+  <!-- 燈箱：點照片放大 -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev">‹</button>
+    <img id="lightboxImg" src="" alt="" />
+    <button class="lightbox-next" id="lightboxNext">›</button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>版權所有 © 2008 花蓮羊角村民宿 Giethoorn Taiwan All Rights Reserved.</p>
+      <p>Designed by <a href="http://www.moredesign.com.tw" target="_blank">摩洱設計</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    /* ==============================================
+       相簿資料 — 取代原本 PHP 資料庫抓資料的部分
+       之後要換照片、加分類，只需要改這個陣列即可
+       圖片請放在 /image/gallery/<分類資料夾>/ 底下
+       ============================================== */
+    const galleryData = [
+      {
+        id: 'exterior',
+        name: '建築外觀',
+        cover: 'image/gallery/aerial/aerial-01.jpg',
+        folder: 'image/gallery/exterior/',
+        photos: ['ext-01.jpg', 'ext-02.jpg', 'ext-03.jpg', 'ext-04.jpg', 'ext-05.jpg', 'ext-06.jpg']
+      },
+      {
+        id: 'room',
+        name: '客房空間',
+        cover: 'image/gallery/aerial/aerial-02.jpg',
+        folder: 'image/gallery/room/',
+        photos: ['room-01.jpg', 'room-02.jpg', 'room-03.jpg', 'room-04.jpg', 'room-05.jpg', 'room-06.jpg', 'room-07.jpg', 'room-08.jpg']
+      },
+      {
+        id: 'garden',
+        name: '庭院景觀',
+        cover: 'image/gallery/aerial/aerial-03.jpg',
+        folder: 'image/gallery/garden/',
+        photos: ['garden-01.jpg', 'garden-02.jpg', 'garden-03.jpg', 'garden-04.jpg', 'garden-05.jpg']
+      },
+      {
+        id: 'seaview',
+        name: '海景日落',
+        cover: 'image/gallery/aerial/aerial-04.jpg',
+        folder: 'image/gallery/seaview/',
+        photos: ['sea-01.jpg', 'sea-02.jpg', 'sea-03.jpg', 'sea-04.jpg', 'sea-05.jpg', 'sea-06.jpg']
+      }
+    ];
+
+    /* ==============================================
+       純 ES6 相簿邏輯：分類切換 + 燈箱瀏覽
+       ============================================== */
+    (() => {
+      const categoriesEl = document.getElementById('galleryCategories');
+      const gridTitleEl = document.getElementById('galleryGridTitle');
+      const gridEl = document.getElementById('galleryGrid');
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const lightboxPrev = document.getElementById('lightboxPrev');
+      const lightboxNext = document.getElementById('lightboxNext');
+
+      let currentCategoryIndex = 0;
+      let currentPhotoIndex = 0;
+
+      // 產生左側分類按鈕（含縮圖）
+      const renderCategories = () => {
+        categoriesEl.innerHTML = '';
+        galleryData.forEach((cat, i) => {
+          const btn = document.createElement('button');
+          if (i === currentCategoryIndex) btn.classList.add('is-active');
+
+          const thumb = document.createElement('img');
+          thumb.className = 'cat-thumb';
+          thumb.src = cat.cover;
+          thumb.alt = cat.name;
+          thumb.loading = 'lazy';
+
+          const label = document.createElement('span');
+          label.textContent = cat.name;
+
+          btn.appendChild(thumb);
+          btn.appendChild(label);
+
+          btn.addEventListener('click', () => {
+            currentCategoryIndex = i;
+            renderCategories();
+            renderGrid();
+          });
+          categoriesEl.appendChild(btn);
+        });
+      };
+
+      // 產生右側照片格
+      const renderGrid = () => {
+        const cat = galleryData[currentCategoryIndex];
+        gridTitleEl.textContent = cat.name;
+        gridEl.innerHTML = '';
+
+        cat.photos.forEach((filename, i) => {
+          const btn = document.createElement('button');
+          const img = document.createElement('img');
+          img.src = cat.folder + filename;
+          img.alt = `${cat.name} ${i + 1}`;
+          img.loading = 'lazy';
+          btn.appendChild(img);
+          btn.addEventListener('click', () => openLightbox(i));
+          gridEl.appendChild(btn);
+        });
+      };
+
+      // 燈箱控制
+      const openLightbox = (photoIndex) => {
+        currentPhotoIndex = photoIndex;
+        updateLightboxImg();
+        lightbox.classList.add('is-open');
+      };
+
+      const closeLightbox = () => {
+        lightbox.classList.remove('is-open');
+      };
+
+      const updateLightboxImg = () => {
+        const cat = galleryData[currentCategoryIndex];
+        lightboxImg.src = cat.folder + cat.photos[currentPhotoIndex];
+        lightboxImg.alt = `${cat.name} ${currentPhotoIndex + 1}`;
+      };
+
+      const showPrev = () => {
+        const cat = galleryData[currentCategoryIndex];
+        currentPhotoIndex = (currentPhotoIndex - 1 + cat.photos.length) % cat.photos.length;
+        updateLightboxImg();
+      };
+
+      const showNext = () => {
+        const cat = galleryData[currentCategoryIndex];
+        currentPhotoIndex = (currentPhotoIndex + 1) % cat.photos.length;
+        updateLightboxImg();
+      };
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightboxPrev.addEventListener('click', showPrev);
+      lightboxNext.addEventListener('click', showNext);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox(); // 點背景關閉
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+      });
+
+      // 初始化
+      renderCategories();
+      renderGrid();
+    })();
+  </script>
+</body>
+
+</html>
